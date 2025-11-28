@@ -2,6 +2,15 @@
 
 <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/3c1ce152-edd2-4414-a550-a5d4f609ad2a" />
 
+![Antigravity IDE](https://img.shields.io/badge/Antigravity%20IDE-121212?style=for-the-badge&logo=jetbrains&logoColor=white)
+![Gemini 3 Pro](https://img.shields.io/badge/Gemini%203%20Pro-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![Telegram Bot](https://img.shields.io/badge/Telegram%20Bot-0088cc?style=for-the-badge&logo=telegram&logoColor=white)
+
+[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red?logo=open-source-initiative&logoColor=white)](https://opensource.org)
+<img src="https://img.shields.io/badge/Made_with-ChatGPT_&_PBL-8A2BE2?logo=openai&logoColor=white"/>
+<img src="https://img.shields.io/badge/Made_with-Love_&_Coffee-ff69b4"/>
+<a href="https://www.buymeacoffee.com/D4vRAM369"><img src="https://img.shields.io/badge/Buy_me_a_coffee-☕-5F7FFF"/></a>
+
 > **"Conexiones reales, sin algoritmos depredadores."**
 
 Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot)
