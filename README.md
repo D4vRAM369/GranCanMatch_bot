@@ -4,12 +4,13 @@ Bot de Telegram para encontrar pareja/amistades en Gran Canaria, fuera de las ap
 
 ## 🌟 Características
 
-- ✅ Registro completo con perfil (edad, zona, bio, foto)
+- ✅ Registro completo con perfil (edad, zona/ciudad, bio, foto)
 - ❤️ Sistema de likes tipo Tinder
 - 🎉 Matches mutuos
 - 💬 Chat solo con matches
 - 🔒 Privacidad: tus likes son secretos hasta que haya match
 - 🔥 Base de datos persistente con Firebase
+- 📍 Filtro por distancia si compartes ubicación y eliges radio
 
 ## 📋 Comandos
 
@@ -17,8 +18,12 @@ Bot de Telegram para encontrar pareja/amistades en Gran Canaria, fuera de las ap
 - `/buscar` - Ver personas y darles like
 - `/matches` - Ver tus matches y chatear
 - `/perfil` - Ver tu perfil
-- `/editar` - Editar tu perfil
+- `/foto` - Cambiar tu foto
 - `/ayuda` - Menú de ayuda
+- `/ubicacion` - Configurar ubicación precisa/aproximada, radio o desactivar
+
+Flujo de registro: género → preferencia → edad → bio → ubicación opcional (compartir GPS o escribir ciudad) → radio de búsqueda.
+Si compartes ubicación podrás filtrar por distancia; si la omites, se filtra solo por preferencia.
 
 ## 🚀 Instalación Local
 
