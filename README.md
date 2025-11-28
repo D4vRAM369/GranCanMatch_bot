@@ -23,9 +23,8 @@
 
 Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot)
 
-**🚧 Aún no desplegado en VPS.  
-GranCanMatch Bot no está funcionando 24/7 por el momento.  
-Actualizaré este apartado cuando el servicio esté operativo de forma estable.** 🚧
+**Este bot está funcionando 24/7 en un VPS.
+Su continuidad depende del uso y apoyo de la comunidad.**
 
 Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantilizan las relaciones humanas, de una forma que no debería ser aceptada como normopatía, únicamente por un _"es lo que hay"_ y porqué es lo que impera a día de hoy.
 
@@ -34,8 +33,50 @@ Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantil
 - 🚫 **Sin micropagos abusivos**: Todas las funciones son gratuitas.
 - 🤝 **Conexión directa**: Si hay match, hablas directamente en Telegram. Sin intermediarios.
 
-Este proyecto se ha inspirado en el bot de citas de Telegram @LeoMatchBot, pero no contiene absolutamente nada de su código fuente. La única aportación del mencionado proyecto ha sido la inspiración de ver como lo que veía como una idea, ya era algo real y posible.
-Aunque no comparto la forma en la que se lleva a cabo el proyecto mencionado, respeto y apoyo mucho el trabajo del Dev que está tras ello.
+_Este proyecto se ha inspirado en el bot de citas de Telegram @LeoMatchBot, pero no contiene absolutamente nada de su código fuente._ Enfocado exclusivamente en Gran Canaria por el momento.
+_ _ _
+
+🧭 Reglas Básicas del Bot
+
+✅ **1. Respeto por encima de todo**
+
+**Trata a los demás como te gustaría ser tratado.** Esto no es una app de consumo rápido: aquí buscamos **conexiones reales**.
+
+🚫**2. Nada de difundir datos personales**
+
+**Está terminantemente prohibido exponer información privada de otras personas obtenida mediante el bot.**
+Este tipo de conductas puede acarrear consecuencias legales graves. Seamos adultos y civilizados.**
+
+🔞 **3. No contenido sexual, explícito o inapropiado**
+
+**No pidas ni compartas material sexual, “nopor”, insinuaciones fuera de lugar o contenido similar.**
+La foto, biografía e ID de Telegram se guardan de forma segura en una base de datos, y ante un proceso judicial podrían ser utilizados como prueba.
+
+
+_ _ _ 
+
+⚠️  **Descargo de Responsabilidad (Disclaimer)**
+
+-**GranCanMatch Bot es un proyecto independiente y comunitario.** Al utilizar este bot, aceptas las siguientes condiciones:
+
+-**No se garantiza la veracidad** de la información proporcionada por los usuarios (edad, fotos, ubicación o biografía).
+
+-**No asumimos responsabilidad por las acciones, comportamientos, encuentros o conversaciones que ocurran fuera del bot entre usuarios que hayan hecho match.**
+
+-**Cada usuario es responsable** de su propia seguridad, privacidad y decisiones personales.
+
+-Aunque existen medidas básicas de protección, **no se puede asegurar al 100% la integridad de las comunicaciones o archivos enviados por terceros** dentro de Telegram.
+
+-**El bot no ofrece servicios profesionales ni actúa como intermediario en conflictos, citas o relaciones entre usuarios.**
+
+-**No se garantiza que obtengas matches**, compatibilidad o resultados específicos en el uso del bot.
+
+-**En casos de abuso, acoso, suplantación o actividades ilegales, Telegram y las autoridades competentes pueden intervenir si es necesario.**
+
+-**Al continuar usando el bot, aceptas estas condiciones y asumes la responsabilidad sobre tu experiencia dentro y fuera de la plataforma.**
+
+_ _ _
+
 
 ## 🌟 Características
 
