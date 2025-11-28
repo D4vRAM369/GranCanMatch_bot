@@ -4,10 +4,12 @@
 
 Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta.
 
-Vivimos en una era donde las apps de citas monetizan nuestra soledad y gamifican las relaciones humanas. **GranCanMatch** nace como una alternativa local y ética:
+Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantilizan las relaciones humanas, de una forma que no debería ser seguir siendo aceptaba como normopatía únicamente por un "es lo que hay". **GranCanMatch** nace como una alternativa local y ética:
 - 🚫 **Sin algoritmos oscuros**: Ves a la gente por orden de llegada o distancia, no porque paguen más.
 - 🚫 **Sin micropagos abusivos**: Todas las funciones son gratuitas.
 - 🤝 **Conexión directa**: Si hay match, hablas directamente en Telegram. Sin intermediarios.
+
+Esta aplicación se ha basado en el bot de citas de Telegram @LeoMatchBot, pero no contiene absolutamente nada de su código fuente: la única aportación de éste proyecto ha sido la idea original, pero no comparto la forma en la que se lleva a cabo el proyecto mencionado ni varias otras cosas, pero respeto y apoyo el trabajo del Dev que está tras ello.
 
 ## 🌟 Características
 
