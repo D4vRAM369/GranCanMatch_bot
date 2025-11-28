@@ -5,11 +5,19 @@
 ![Antigravity IDE](https://img.shields.io/badge/Antigravity%20IDE-121212?style=for-the-badge&logo=jetbrains&logoColor=white)
 ![Gemini 3 Pro](https://img.shields.io/badge/Gemini%203%20Pro-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![Telegram Bot](https://img.shields.io/badge/Telegram%20Bot-0088cc?style=for-the-badge&logo=telegram&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js%2020-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![PM2](https://img.shields.io/badge/PM2-2B037A?style=for-the-badge&logo=pm2&logoColor=white)
+![DigitalOcean](https://img.shields.io/badge/DigitalOcean%20VPS-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white)
+![Gran Canaria](https://img.shields.io/badge/Gran%20Canaria-🇮🇨-FFDD00?style=for-the-badge)
+
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue?style=for-the-badge)
+![Made by D4vRAM](https://img.shields.io/badge/Made%20by-D4vRAM369-006CFF?style=for-the-badge&logo=github&logoColor=white)
 
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red?logo=open-source-initiative&logoColor=white)](https://opensource.org)
-<img src="https://img.shields.io/badge/Made_with-ChatGPT_&_PBL-8A2BE2?logo=openai&logoColor=white"/>
-<img src="https://img.shields.io/badge/Made_with-Love_&_Coffee-ff69b4"/>
-<a href="https://www.buymeacoffee.com/D4vRAM369"><img src="https://img.shields.io/badge/Buy_me_a_coffee-☕-5F7FFF"/></a>
+![Made_with_ChatGPT](https://img.shields.io/badge/Made_with-ChatGPT_&_PBL-8A2BE2?logo=openai&logoColor=white)
+![Love & Coffee](https://img.shields.io/badge/Made_with-Love_&_Coffee-ff69b4)
+[![Buy me a coffee](https://img.shields.io/badge/Buy_me_a_coffee-☕-5F7FFF)](https://www.buymeacoffee.com/D4vRAM369)
+
 
 > **"Conexiones reales, sin algoritmos depredadores."**
 
