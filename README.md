@@ -36,16 +36,19 @@ Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantil
 _Este proyecto se ha inspirado en el bot de citas de Telegram @LeoMatchBot, pero no contiene absolutamente nada de su código fuente._ Enfocado exclusivamente en Gran Canaria por el momento.
 _ _ _
 
-🧭 Reglas Básicas del Bot
+**🧭 Reglas Básicas del Bot**
+
 
 ✅ **1. Respeto por encima de todo**
 
 **Trata a los demás como te gustaría ser tratado.** Esto no es una app de consumo rápido: aquí buscamos **conexiones reales**.
 
+
 🚫**2. Nada de difundir datos personales**
 
 **Está terminantemente prohibido exponer información privada de otras personas obtenida mediante el bot.**
 Este tipo de conductas puede acarrear consecuencias legales graves. Seamos adultos y civilizados.**
+
 
 🔞 **3. No contenido sexual, explícito o inapropiado**
 
@@ -65,7 +68,7 @@ _ _ _
 
 -**Cada usuario es responsable** de su propia seguridad, privacidad y decisiones personales.
 
--Aunque existen medidas básicas de protección, **no se puede asegurar al 100% la integridad de las comunicaciones o archivos enviados por terceros** dentro de Telegram.
+-Aunque existen medidas básicas de protección, **no se puede asegurar al 100% la integridad de las comunicaciones o archivos enviados por terceros** dentro de Telegram. Esto ya depende de la plataforma en sí, no del proyecto.
 
 -**El bot no ofrece servicios profesionales ni actúa como intermediario en conflictos, citas o relaciones entre usuarios.**
 
