@@ -60,7 +60,7 @@ _ _ _
 
 ⚠️  **Descargo de Responsabilidad (Disclaimer)**
 
--**GranCanMatch Bot es un proyecto independiente y comunitario.** Al utilizar este bot, aceptas las siguientes condiciones:
+**GranCanMatch Bot es un proyecto independiente y comunitario.** Al utilizar este bot, aceptas las siguientes condiciones:
 
 -**No se garantiza la veracidad** de la información proporcionada por los usuarios (edad, fotos, ubicación o biografía).
 
