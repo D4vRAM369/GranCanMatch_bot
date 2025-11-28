@@ -47,7 +47,7 @@ _ _ _
 🚫**2. Nada de difundir datos personales**
 
 **Está terminantemente prohibido exponer información privada de otras personas obtenida mediante el bot.**
-Este tipo de conductas puede acarrear consecuencias legales graves. Seamos adultos y civilizados.**
+Este tipo de conductas puede acarrear consecuencias legales graves. **Seamos adultos y civilizados**.
 
 
 🔞 **3. No contenido sexual, explícito o inapropiado**
