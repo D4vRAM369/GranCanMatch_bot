@@ -1,15 +1,24 @@
 # 🌴 GranCanMatch Bot
 
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/3c1ce152-edd2-4414-a550-a5d4f609ad2a" />
+
 > **"Conexiones reales, sin algoritmos depredadores."**
 
-Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta.
+Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot)
 
-Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantilizan las relaciones humanas, de una forma que no debería ser seguir siendo aceptaba como normopatía únicamente por un "es lo que hay". **GranCanMatch** nace como una alternativa local y ética:
+**🚧 Aún no desplegado en VPS.  
+GranCanMatch Bot no está funcionando 24/7 por el momento.  
+Actualizaré este apartado cuando el servicio esté operativo de forma estable.** 🚧
+
+Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantilizan las relaciones humanas, de una forma que no debería ser aceptada como normopatía, únicamente por un _"es lo que hay"_ y porqué es lo que impera a día de hoy.
+
+**GranCanMatch** nace como una alternativa local y ética a su monopolio:
 - 🚫 **Sin algoritmos oscuros**: Ves a la gente por orden de llegada o distancia, no porque paguen más.
 - 🚫 **Sin micropagos abusivos**: Todas las funciones son gratuitas.
 - 🤝 **Conexión directa**: Si hay match, hablas directamente en Telegram. Sin intermediarios.
 
-Esta aplicación se ha basado en el bot de citas de Telegram @LeoMatchBot, pero no contiene absolutamente nada de su código fuente: la única aportación de éste proyecto ha sido la idea original, pero no comparto la forma en la que se lleva a cabo el proyecto mencionado ni varias otras cosas, pero respeto y apoyo el trabajo del Dev que está tras ello.
+Este proyecto se ha inspirado en el bot de citas de Telegram @LeoMatchBot, pero no contiene absolutamente nada de su código fuente. La única aportación del mencionado proyecto ha sido la inspiración de ver como lo que veía como una idea, ya era algo real y posible.
+Aunque no comparto la forma en la que se lleva a cabo el proyecto mencionado, respeto y apoyo mucho el trabajo del Dev que está tras ello.
 
 ## 🌟 Características
 
