@@ -136,6 +136,15 @@ async function foto(ctx) {
     ctx.reply('📸 Para cambiar tu foto de perfil, simplemente **envíame la foto** aquí mismo en el chat (como si se la enviaras a un amigo).', { parse_mode: 'Markdown' });
 }
 
+async function borrar(ctx) {
+    ctx.reply(
+        '⚠️ ¿Seguro que quieres borrar tu perfil y tus datos?\nEsto eliminará tus likes y preferencias.',
+        Markup.inlineKeyboard([
+            [Markup.button.callback('Sí, borrar', 'delete_yes'), Markup.button.callback('Cancelar', 'delete_no')]
+        ])
+    );
+}
+
 async function ubicacion(ctx) {
     const userId = String(ctx.from.id);
     const user = await usersDB.getUser(userId);
@@ -159,5 +168,6 @@ module.exports = {
     ayuda,
     foto,
     matches,
-    ubicacion
+    ubicacion,
+    borrar
 };

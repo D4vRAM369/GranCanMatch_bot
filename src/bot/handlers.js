@@ -146,6 +146,23 @@ async function handleLocationActions(ctx) {
     }
 }
 
+async function handleDeleteActions(ctx) {
+    const action = ctx.match[0];
+    const userId = String(ctx.from.id);
+
+    if (action === 'delete_yes') {
+        const ok = await usersDB.deleteUser(userId);
+        ctx.answerCbQuery();
+        return ok
+            ? ctx.reply('✅ Tu perfil y datos han sido borrados.')
+            : ctx.reply('❌ No se pudo borrar tu perfil. Inténtalo de nuevo.');
+    }
+
+    if (action === 'delete_no') {
+        ctx.answerCbQuery('Operación cancelada.');
+    }
+}
+
 async function handleRadius(ctx) {
     const userId = String(ctx.from.id);
     const radius = parseInt(ctx.match[1], 10);
@@ -173,7 +190,7 @@ async function handleText(ctx) {
                 return ctx.reply('Introduce una edad válida (solo número entre 18 y 100).');
             }
             await usersDB.updateUser(userId, { age: parseInt(text, 10), step: 'register_bio' });
-            ctx.reply('📝 Escribe una breve bio (máx 500 caracteres).\nEjemplo: "Me gusta el surf y el café en Vegueta."');
+            ctx.reply('📝 Escribe una breve bio (máx 500 caracteres).\nEjemplo: "Me gustaría conocer genta nueva que me de buena vibra, sin importar lo superficial. Solo gente auténtica: la autenticidad está en peligro de extinción"');
             break;
 
         case 'register_bio':
@@ -249,5 +266,6 @@ module.exports = {
     handleText,
     handleLocation,
     handleRadius,
-    handleLocationActions
+    handleLocationActions,
+    handleDeleteActions
 };

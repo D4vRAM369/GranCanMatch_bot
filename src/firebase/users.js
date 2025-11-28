@@ -84,8 +84,25 @@ async function getCandidates(currentUser) {
     }
 }
 
+async function deleteUser(userId) {
+    try {
+        const seenRef = db.collection(collections.users).doc(userId).collection(collections.seen);
+        const seenDocs = await seenRef.get();
+        const batch = db.batch();
+        seenDocs.forEach((doc) => batch.delete(doc.ref));
+        await batch.commit();
+
+        await db.collection(collections.users).doc(userId).delete();
+        return true;
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        return false;
+    }
+}
+
 module.exports = {
     updateUser,
     getUser,
-    getCandidates
+    getCandidates,
+    deleteUser
 };

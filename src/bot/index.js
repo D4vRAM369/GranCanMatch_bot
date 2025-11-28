@@ -20,6 +20,7 @@ bot.command('ayuda', commands.ayuda);
 bot.command('foto', commands.foto);
 bot.command('matches', commands.matches);
 bot.command('ubicacion', commands.ubicacion);
+bot.command('borrar', commands.borrar);
 
 // Acciones (Botones)
 bot.action(['gender_male', 'gender_female'], handlers.handleGender);
@@ -27,6 +28,7 @@ bot.action(/pref_(.+)/, handlers.handlePreference);
 bot.action(/^(like|pass)_(.+)$/, handlers.handleLikeDislike);
 bot.action(['start_search', 'start_edit'], handlers.handleStartOptions);
 bot.action(['loc_precise', 'loc_city', 'loc_off', 'loc_count'], handlers.handleLocationActions);
+bot.action(['delete_yes', 'delete_no'], handlers.handleDeleteActions);
 bot.action(/radius_(\d+)/, handlers.handleRadius);
 
 // Eventos

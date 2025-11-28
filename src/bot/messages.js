@@ -18,6 +18,7 @@ const helpMessage = `📚 *Ayuda del MatchBot*
 /ayuda - Ver este mensaje
 /foto - Cambiar tu foto
 /ubicacion - Gestionar ubicación (precisa/aproximada/off) y radio
+/borrar - Eliminar tu perfil y datos
 
 📅 Registro: género → preferencia → edad → bio → ubicación (opcional) → radio de búsqueda.
 📍 Si compartes ubicación, filtramos por distancia.
