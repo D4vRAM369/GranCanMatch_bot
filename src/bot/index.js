@@ -21,6 +21,7 @@ bot.command('foto', commands.foto);
 bot.command('matches', commands.matches);
 bot.command('ubicacion', commands.ubicacion);
 bot.command('borrar', commands.borrar);
+bot.command('link', commands.link);
 
 // Acciones (Botones)
 bot.action(['gender_male', 'gender_female'], handlers.handleGender);

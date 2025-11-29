@@ -169,5 +169,6 @@ module.exports = {
     foto,
     matches,
     ubicacion,
-    borrar
+    borrar,
+    link: require('./linkFlow').handleLinkCommand
 };
