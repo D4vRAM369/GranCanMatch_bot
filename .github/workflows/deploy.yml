@@ -34,8 +34,6 @@ jobs:
             npm install --production --no-optional
 
             echo "➡️ Reiniciando PM2"
-            pm2 restart bot || pm2 start src/server.js --name "bot"
+            pm2 restart grancanmatch || pm2 start src/server.js --name grancanmatch
             pm2 save
-
-            echo "✔️ Deploy completado correctamente"
 
