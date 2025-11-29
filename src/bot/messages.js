@@ -4,7 +4,7 @@ Un lugar donde conocer gente de forma sencilla y directa en Las Palmas 🇮🇨,
 
 En éste bot, el objetivo no es hacer dinero, sino conectar con personas de Gran Canaria que echen de menos una conexión auténtica, lejos de la tiranía de los algoritmos con suscripciones abusivas.
 
-Desarrollado por D4vRAM. Más info sobre el creador del bot en: https://github.com/D4vRAM369
+Desarrollado por D4vRAM. Tienes el proyecto y el código fuente del repositorio publicado en: https://github.com/D4vRAM369/GranCanMatch_bot 😉💫
 
 Para empezar, cuéntame un poco sobre ti.
 ¿Eres chico o chica?`;

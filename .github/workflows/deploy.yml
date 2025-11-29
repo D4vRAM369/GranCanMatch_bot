@@ -1,12 +1,14 @@
-name: Deploy to VPS
+name: Auto-Deploy to VPS
 
 on:
   push:
-    branches: [ main, master, Spots+GranCanMatch_bot ]
+    branches:
+      - '**'        # Auto-deploy desde cualquier rama
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -16,21 +18,26 @@ jobs:
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.VPS_PASSWORD }}
-        # Si usas contraseña en lugar de clave SSH, usa: password: ${{ secrets.VPS_PASSWORD }}
+        password: ${{ secrets.VPS_PASSWORD }}
+
         script: |
-          # Navegar al directorio del bot
+          echo "➡️ Conectado al VPS"
+
+          # Ruta donde está el bot
           cd /root/GranCanMatch_bot || cd /home/admin/GranCanMatch_bot
-          
-          # Obtener los últimos cambios
-          git pull origin main
-          
-          # Instalar dependencias por si acaso
+
+          echo "➡️ Actualizando rama: ${{ github.ref_name }}"
+          git fetch origin
+          git checkout ${{ github.ref_name }}
+          git reset --hard origin/${{ github.ref_name }}
+
+          echo "➡️ Instalando dependencias"
           npm install --production
-          
-          # Reiniciar el proceso (asumiendo que usas PM2)
-          # Si el proceso se llama 'grancanmatch-bot'
+
+          echo "➡️ Reiniciando PM2"
           pm2 restart grancanmatch-bot || pm2 start src/server.js --name grancanmatch-bot
-          
-          # Guardar la lista de procesos para que arranque al inicio
+
           pm2 save
+
+          echo "✔️ Deploy completado para rama ${{ github.ref_name }}"
+
