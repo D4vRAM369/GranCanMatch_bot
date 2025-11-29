@@ -1,9 +1,9 @@
 # Política de Privacidad - GranCanMatch Bot
 
-Última actualización: 2024-xx-xx
+Última actualización: 2025-11-29
 
 ## Quién opera el bot
-GranCanMatch Bot es operado por el propietario del bot en Telegram. Contacto: https://github.com/D4vRAM369 (Issues o contacto en el perfil).
+GranCanMatch_bot es operado por el propietario del bot en Telegram. Contacto: https://github.com/D4vRAM369 (Issues o contacto en el perfil).
 
 ## Datos que se recogen
 - Identificadores de Telegram: ID de usuario, username, nombre visible.
