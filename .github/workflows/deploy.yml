@@ -1,0 +1,36 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        # Si usas contraseña en lugar de clave SSH, usa: password: ${{ secrets.VPS_PASSWORD }}
+        script: |
+          # Navegar al directorio del bot
+          cd /root/GranCanMatch_bot || cd /home/admin/GranCanMatch_bot
+          
+          # Obtener los últimos cambios
+          git pull origin main
+          
+          # Instalar dependencias por si acaso
+          npm install --production
+          
+          # Reiniciar el proceso (asumiendo que usas PM2)
+          # Si el proceso se llama 'grancanmatch-bot'
+          pm2 restart grancanmatch-bot || pm2 start src/server.js --name grancanmatch-bot
+          
+          # Guardar la lista de procesos para que arranque al inicio
+          pm2 save
