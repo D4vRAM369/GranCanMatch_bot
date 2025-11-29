@@ -3,41 +3,39 @@ name: Auto-Deploy to VPS
 on:
   push:
     branches:
-      - '**'        # Auto-deploy desde cualquier rama
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USERNAME }}
-        password: ${{ secrets.VPS_PASSWORD }}
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: root
+          key: ${{ secrets.SSH_KEY }}
 
-        script: |
-          echo "➡️ Conectado al VPS"
+          script: |
+            echo "➡️ Conectado al VPS"
 
-          # Ruta donde está el bot
-          cd /root/GranCanMatch_bot || cd /home/admin/GranCanMatch_bot
+            # Ruta real en EL VPS
+            cd /var/www/GranCanMatch_bot
 
-          echo "➡️ Actualizando rama: ${{ github.ref_name }}"
-          git fetch origin
-          git checkout ${{ github.ref_name }}
-          git reset --hard origin/${{ github.ref_name }}
+            echo "➡️ Actualizando código"
+            git fetch --all
+            git reset --hard origin/main
 
-          echo "➡️ Instalando dependencias"
-          npm install --production
+            echo "➡️ Instalando dependencias"
+            npm install --production --no-optional
 
-          echo "➡️ Reiniciando PM2"
-          pm2 restart grancanmatch-bot || pm2 start src/server.js --name grancanmatch-bot
+            echo "➡️ Reiniciando PM2"
+            pm2 restart bot || pm2 start src/server.js --name "bot"
+            pm2 save
 
-          pm2 save
-
-          echo "✔️ Deploy completado para rama ${{ github.ref_name }}"
+            echo "✔️ Deploy completado correctamente"
 
