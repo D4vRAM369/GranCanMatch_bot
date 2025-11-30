@@ -1,4 +1,4 @@
-const { db } = require('../firebase/admin');
+const db = require('../firebase/admin');
 const { v4: uuidv4 } = require('uuid');
 const { Markup } = require('telegraf');
 
@@ -7,7 +7,9 @@ async function handleLinkCommand(ctx) {
     const telegramId = String(ctx.from.id);
 
     // Generamos un token corto (8 caracteres)
-    const token = uuidv4().split('-')[0];
+    // const token = uuidv4().split('-')[0]; 
+    // Reemplazo temporal para evitar problemas con uuid
+    const token = Math.random().toString(36).substring(2, 10);
 
     try {
         // Guardamos la intención de vinculación en Firestore
@@ -30,15 +32,18 @@ Para conectar tu cuenta y usar tu ubicación real/fotos:
 _Este código expira en 10 minutos._
         `;
 
-        // Si tuviéramos Deep Links configurados:
-        // const deepLink = `spots://link?token=${token}`;
-        // Markup.button.url('🔓 Abrir Spots', deepLink)
+        const deepLink = `spots://link?token=${token}`;
 
-        await ctx.reply(message, { parse_mode: 'Markdown' });
+        await ctx.reply(message, {
+            parse_mode: 'Markdown',
+            ...Markup.inlineKeyboard([
+                [Markup.button.url('🔓 Abrir Spots y Vincular', deepLink)]
+            ])
+        });
 
     } catch (error) {
         console.error('Error generando token de vinculación:', error);
-        ctx.reply('❌ Hubo un error al generar el código. Inténtalo de nuevo más tarde.');
+        ctx.reply(`❌ Hubo un error: ${error.message}`);
     }
 }
 
