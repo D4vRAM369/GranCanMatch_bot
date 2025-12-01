@@ -15,11 +15,13 @@ jobs:
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.10
+        env:
+          FIREBASE_SPOTS_KEY: ${{ secrets.FIREBASE_SPOTS_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
           key: ${{ secrets.SSH_KEY }}
-
+          envs: FIREBASE_SPOTS_KEY
           script: |
             echo "➡️ Conectado al VPS"
 
@@ -29,6 +31,9 @@ jobs:
             echo "➡️ Actualizando código"
             git fetch --all
             git reset --hard origin/main
+
+            echo "➡️ Restaurando secretos"
+            echo "$FIREBASE_SPOTS_KEY" > src/firebase/serviceAccountKey-spots.json
 
             echo "➡️ Instalando dependencias"
             npm install --production --no-optional
