@@ -49,6 +49,9 @@ async function handleLikeDislike(ctx) {
         const isMatch = await matchesDB.checkMatch(userId, targetId);
 
         if (isMatch) {
+            // Registrar el match en la colección 'matches' (Nuevo sistema)
+            await matchesDB.createMatch(userId, targetId);
+
             // Obtener datos del target para saber su username
             const targetUser = await usersDB.getUser(targetId);
             const targetName = targetUser ? targetUser.name : 'Alguien';
