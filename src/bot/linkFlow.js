@@ -35,13 +35,8 @@ Para conectar tu cuenta y usar tu ubicación real/fotos:
 _Este código expira en 10 minutos._
         `;
 
-        const deepLink = `spots://link?token=${token}`;
-
         await ctx.reply(message, {
-            parse_mode: 'Markdown',
-            ...Markup.inlineKeyboard([
-                [Markup.button.url('🔓 Abrir Spots y Vincular', deepLink)]
-            ])
+            parse_mode: 'Markdown'
         });
 
     } catch (error) {
