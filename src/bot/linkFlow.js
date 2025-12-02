@@ -11,11 +11,17 @@ async function handleLinkCommand(ctx) {
         return ctx.reply('⚠️ Error de configuración en el servidor. El administrador debe añadir la clave de Spots.');
     }
 
-    // Generamos un token corto (8 caracteres)
-    // Usamos Math.random para no depender de librerías externas por ahora
-    const token = Math.random().toString(36).substring(2, 10);
-
     try {
+        // Verificar si ya está vinculado
+        const userDoc = await spotsDb.collection('users').doc(telegramId).get();
+        if (userDoc.exists && userDoc.data().isLinked) {
+            return ctx.reply('✅ Ya tienes tu cuenta vinculada con Spots.\n\nSi necesitas vincular un nuevo dispositivo, ignora este mensaje y usa el código que generaré a continuación, pero ten en cuenta que esto podría desvincular el dispositivo anterior si no usas la misma cuenta de App.');
+        }
+
+        // Generamos un token corto (8 caracteres)
+        // Usamos Math.random para no depender de librerías externas por ahora
+        const token = Math.random().toString(36).substring(2, 10);
+
         // Guardamos en la DB de SPOTS (spots-b0070)
         await spotsDb.collection('link_requests').doc(token).set({
             telegramId: telegramId,

@@ -29,10 +29,14 @@ function initFirestoreListener(bot) {
                     const now = new Date();
                     const diff = now - signalTime;
 
-                    // Si la señal es de hace menos de 5 segundos, asumimos que es nueva
-                    if (diff < 5000) {
+                    console.log(`📡 Signal received for ${telegramId}. Diff: ${diff}ms`);
+
+                    // Si la señal es de hace menos de 60 segundos (aumentado para evitar problemas de sync/latencia)
+                    if (diff < 60000) {
                         bot.telegram.sendMessage(telegramId, `📡 *Señal de prueba recibida*\n\n¡La conexión entre Spots y Telegram funciona correctamente!`, { parse_mode: 'Markdown' })
                             .catch(err => console.error(`Error sending test msg to ${telegramId}:`, err));
+                    } else {
+                        console.log(`Signal ignored because it's too old (${diff}ms > 60000ms)`);
                     }
                 }
             }
