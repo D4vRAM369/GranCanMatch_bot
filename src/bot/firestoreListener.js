@@ -15,14 +15,14 @@ function initFirestoreListener(bot) {
 
     query.onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
-            if (change.type === 'modified') {
+            // Detectar tanto modificaciones como nuevas vinculaciones
+            if (change.type === 'modified' || change.type === 'added') {
                 const data = change.doc.data();
                 const telegramId = change.doc.id;
 
-                // Detectar si cambió 'lastTestSignal'
-                // En un caso real, compararíamos con el valor anterior, pero aquí simplificamos.
-                // Si el timestamp es muy reciente (menos de 10s), notificamos.
+                console.log(`🔔 Change detected for ${telegramId}: ${change.type}`);
 
+                // Detectar si cambió 'lastTestSignal'
                 const lastSignal = data.lastTestSignal;
                 if (lastSignal) {
                     const signalTime = lastSignal.toDate();
