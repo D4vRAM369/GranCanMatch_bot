@@ -29,20 +29,24 @@ async function handleLinkCommand(ctx) {
             status: 'pending'
         });
 
+        const deepLink = `spots://link?token=${token}`;
+
         const message = `
 🔗 *Vincular con Spots*
 
 Para conectar tu cuenta y usar tu ubicación real/fotos:
 
-1. Abre la App *Spots*.
-2. Ve a Ajustes > Vincular Telegram.
-3. Introduce este código: \`${token}\`
+1. Pulsa el botón de abajo para abrir Spots automáticamente.
+2. O ve a Ajustes > Vincular Telegram e introduce: \`${token}\`
 
 _Este código expira en 10 minutos._
         `;
 
         await ctx.reply(message, {
-            parse_mode: 'Markdown'
+            parse_mode: 'Markdown',
+            ...Markup.inlineKeyboard([
+                Markup.button.url('🚀 Abrir Spots y Vincular', deepLink)
+            ])
         });
 
     } catch (error) {

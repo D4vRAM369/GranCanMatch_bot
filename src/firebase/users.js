@@ -122,9 +122,32 @@ async function deleteUser(userId) {
     }
 }
 
+async function getAllUsers() {
+    try {
+        const snapshot = await db.collection(collections.users).get();
+        return snapshot.docs.map(doc => doc.data());
+    } catch (error) {
+        console.error('Error getting all users:', error);
+        return [];
+    }
+}
+
+async function getUserByUsername(username) {
+    try {
+        const snapshot = await db.collection(collections.users).where('username', '==', username).limit(1).get();
+        if (snapshot.empty) return null;
+        return snapshot.docs[0].data();
+    } catch (error) {
+        console.error('Error getting user by username:', error);
+        return null;
+    }
+}
+
 module.exports = {
     updateUser,
     getUser,
     getCandidates,
-    deleteUser
+    deleteUser,
+    getAllUsers,
+    getUserByUsername
 };

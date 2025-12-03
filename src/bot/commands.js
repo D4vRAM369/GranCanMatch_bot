@@ -161,6 +161,56 @@ async function ubicacion(ctx) {
     );
 }
 
+async function users(ctx) {
+    // Seguridad: Solo D4vRAM369 puede usar este comando
+    if (ctx.from.username !== 'D4vRAM369') {
+        return; // Ignorar silenciosamente
+    }
+
+    try {
+        const allUsers = await usersDB.getAllUsers();
+        const json = JSON.stringify(allUsers, null, 2);
+
+        await ctx.replyWithDocument({
+            source: Buffer.from(json),
+            filename: `users_dump_${new Date().toISOString().split('T')[0]}.json`
+        });
+    } catch (error) {
+        console.error('Error en comando /users:', error);
+        ctx.reply('❌ Error al exportar usuarios.');
+    }
+}
+
+async function admin(ctx) {
+    const message = ctx.message.text.split(' ').slice(1).join(' ');
+    if (!message) return ctx.reply('📝 Uso: /admin <tu mensaje para el administrador>');
+
+    try {
+        // Buscar ID del admin (D4vRAM369)
+        const adminUser = await usersDB.getUserByUsername('D4vRAM369');
+
+        if (!adminUser) {
+            return ctx.reply('⚠️ El administrador no está disponible en este momento.');
+        }
+
+        const senderName = ctx.from.username ? `@${ctx.from.username}` : ctx.from.first_name;
+        const senderId = ctx.from.id;
+
+        // Enviar al admin
+        await ctx.telegram.sendMessage(
+            adminUser.id,
+            `📩 *Mensaje Anónimo (Admin)*\n\nDe: ${senderName} (ID: ${senderId})\n\n${message}`,
+            { parse_mode: 'Markdown' }
+        );
+
+        ctx.reply('✅ Tu mensaje ha sido enviado al administrador de forma anónima (solo verá tu nickname).');
+
+    } catch (error) {
+        console.error('Error enviando mensaje al admin:', error);
+        ctx.reply('❌ Hubo un error al enviar el mensaje.');
+    }
+}
+
 module.exports = {
     start,
     perfil,
@@ -170,5 +220,7 @@ module.exports = {
     matches,
     ubicacion,
     borrar,
+    users,
+    admin,
     link: require('./linkFlow').handleLinkCommand
 };

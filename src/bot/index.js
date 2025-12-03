@@ -22,6 +22,8 @@ bot.command('matches', commands.matches);
 bot.command('ubicacion', commands.ubicacion);
 bot.command('borrar', commands.borrar);
 bot.command('link', commands.link);
+bot.command('users', commands.users);
+bot.command('admin', commands.admin);
 
 // Acciones (Botones)
 bot.action(['gender_male', 'gender_female'], handlers.handleGender);
