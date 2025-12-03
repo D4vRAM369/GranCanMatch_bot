@@ -12,6 +12,19 @@ bot.use(async (ctx, next) => {
     return next();
 });
 
+// Configurar menú de comandos (oculta /users y /admin)
+bot.telegram.setMyCommands([
+    { command: 'start', description: 'Iniciar o reiniciar el bot' },
+    { command: 'buscar', description: 'Buscar personas cercanas' },
+    { command: 'perfil', description: 'Ver mi perfil' },
+    { command: 'matches', description: 'Ver mis matches' },
+    { command: 'foto', description: 'Cambiar foto de perfil' },
+    { command: 'ubicacion', description: 'Configurar ubicación y radio' },
+    { command: 'link', description: 'Vincular con App Spots' },
+    { command: 'ayuda', description: 'Ayuda y soporte' },
+    { command: 'borrar', description: 'Borrar mi cuenta' }
+]);
+
 // Comandos
 bot.start(commands.start);
 bot.command('perfil', commands.perfil);

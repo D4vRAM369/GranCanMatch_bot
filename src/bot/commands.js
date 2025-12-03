@@ -161,9 +161,11 @@ async function ubicacion(ctx) {
     );
 }
 
+const ADMINS = ['D4vRAM369', 'veritasfiliatemporis777'];
+
 async function users(ctx) {
-    // Seguridad: Solo D4vRAM369 puede usar este comando
-    if (ctx.from.username !== 'D4vRAM369') {
+    // Seguridad: Solo los admins definidos pueden usar este comando
+    if (!ADMINS.includes(ctx.from.username)) {
         return; // Ignorar silenciosamente
     }
 
@@ -186,22 +188,30 @@ async function admin(ctx) {
     if (!message) return ctx.reply('📝 Uso: /admin <tu mensaje para el administrador>');
 
     try {
-        // Buscar ID del admin (D4vRAM369)
-        const adminUser = await usersDB.getUserByUsername('D4vRAM369');
-
-        if (!adminUser) {
-            return ctx.reply('⚠️ El administrador no está disponible en este momento.');
-        }
-
         const senderName = ctx.from.username ? `@${ctx.from.username}` : ctx.from.first_name;
         const senderId = ctx.from.id;
+        let sentCount = 0;
 
-        // Enviar al admin
-        await ctx.telegram.sendMessage(
-            adminUser.id,
-            `📩 *Mensaje Anónimo (Admin)*\n\nDe: ${senderName} (ID: ${senderId})\n\n${message}`,
-            { parse_mode: 'Markdown' }
-        );
+        // Intentar enviar a todos los admins
+        for (const adminName of ADMINS) {
+            const adminUser = await usersDB.getUserByUsername(adminName);
+            if (adminUser) {
+                try {
+                    await ctx.telegram.sendMessage(
+                        adminUser.id,
+                        `📩 *Mensaje Anónimo (Admin)*\n\nDe: ${senderName} (ID: ${senderId})\n\n${message}`,
+                        { parse_mode: 'Markdown' }
+                    );
+                    sentCount++;
+                } catch (e) {
+                    console.error(`No se pudo enviar al admin ${adminName}:`, e.message);
+                }
+            }
+        }
+
+        if (sentCount === 0) {
+            return ctx.reply('⚠️ El administrador no está disponible en este momento.');
+        }
 
         ctx.reply('✅ Tu mensaje ha sido enviado al administrador de forma anónima (solo verá tu nickname).');
 
