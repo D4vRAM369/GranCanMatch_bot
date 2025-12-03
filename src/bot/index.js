@@ -22,7 +22,8 @@ bot.telegram.setMyCommands([
     { command: 'ubicacion', description: 'Configurar ubicación y radio' },
     { command: 'link', description: 'Vincular con App Spots' },
     { command: 'ayuda', description: 'Ayuda y soporte' },
-    { command: 'borrar', description: 'Borrar mi cuenta' }
+    { command: 'borrar', description: 'Borrar mi cuenta' },
+    { command: 'admin', description: 'Enviar mensaje al administrador (SOLO PARA REPORTES)' }
 ]);
 
 // Comandos
@@ -37,6 +38,7 @@ bot.command('borrar', commands.borrar);
 bot.command('link', commands.link);
 bot.command('users', commands.users);
 bot.command('admin', commands.admin);
+bot.command('promo', commands.promo);
 
 // Acciones (Botones)
 bot.action(['gender_male', 'gender_female'], handlers.handleGender);
@@ -46,6 +48,7 @@ bot.action(['start_search', 'start_edit'], handlers.handleStartOptions);
 bot.action(['loc_precise', 'loc_city', 'loc_off', 'loc_count'], handlers.handleLocationActions);
 bot.action(['delete_yes', 'delete_no'], handlers.handleDeleteActions);
 bot.action(/radius_(\d+)/, handlers.handleRadius);
+bot.action('admin_contact', handlers.handleAdmin);
 
 // Eventos
 bot.on('photo', handlers.handlePhoto);

@@ -8,5 +8,6 @@ module.exports = {
         users: 'users',
         seen: 'seen',
         matches: 'matches'
-    }
+    },
+    admins: ['D4vRAM369', 'veritasfiliatemporis777']
 };

@@ -231,6 +231,41 @@ async function handleText(ctx) {
             }
             break;
 
+        case 'admin_message':
+            {
+                const { admins: ADMINS } = require('../config');
+                const senderName = ctx.from.username ? `@${ctx.from.username}` : ctx.from.first_name;
+                const senderId = ctx.from.id;
+                let sentCount = 0;
+
+                // Intentar enviar a todos los admins
+                for (const adminName of ADMINS) {
+                    const adminUser = await usersDB.getUserByUsername(adminName);
+                    if (adminUser) {
+                        try {
+                            await ctx.telegram.sendMessage(
+                                adminUser.id,
+                                `📩 *Mensaje de Usuario*\n\nDe: ${senderName} (ID: ${senderId})\n\n${text}`,
+                                { parse_mode: 'Markdown' }
+                            );
+                            sentCount++;
+                        } catch (e) {
+                            console.error(`No se pudo enviar al admin ${adminName}:`, e.message);
+                        }
+                    }
+                }
+
+                // Resetear el estado del usuario
+                await usersDB.updateUser(userId, { step: 'ready' });
+
+                if (sentCount === 0) {
+                    return ctx.reply('⚠️ El administrador no está disponible en este momento.');
+                }
+
+                ctx.reply('✅ Tu mensaje ha sido enviado al administrador.');
+            }
+            break;
+
         default:
             break;
     }
@@ -260,6 +295,23 @@ async function handleLocation(ctx) {
     }
 }
 
+async function handleAdmin(ctx) {
+    const userId = String(ctx.from.id);
+
+    // Responder al callback del botón
+    ctx.answerCbQuery();
+
+    // Cambiar el estado del usuario para esperar su mensaje
+    await usersDB.updateUser(userId, { step: 'admin_message' });
+
+    ctx.reply(
+        '📝 *Enviar mensaje al administrador*\n\n' +
+        'Escribe tu mensaje y lo enviaré (verán tu nickname).\n\n' +
+        '💡 Usa esto para reportes, sugerencias o problemas.',
+        { parse_mode: 'Markdown' }
+    );
+}
+
 module.exports = {
     handleGender,
     handlePreference,
@@ -270,5 +322,6 @@ module.exports = {
     handleLocation,
     handleRadius,
     handleLocationActions,
-    handleDeleteActions
+    handleDeleteActions,
+    handleAdmin
 };

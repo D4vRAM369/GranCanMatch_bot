@@ -1,6 +1,7 @@
 const { Markup } = require('telegraf');
 const usersDB = require('../firebase/users');
 const messages = require('./messages');
+const { admins: ADMINS } = require('../config');
 
 // --- COMANDOS ---
 
@@ -129,7 +130,12 @@ async function buscar(ctx) {
 }
 
 async function ayuda(ctx) {
-    ctx.reply(messages.helpMessage, { parse_mode: 'Markdown' });
+    ctx.reply(messages.helpMessage, {
+        parse_mode: 'Markdown',
+        ...Markup.inlineKeyboard([
+            [Markup.button.callback('📩 Contactar Administrador', 'admin_contact')]
+        ])
+    });
 }
 
 async function foto(ctx) {
@@ -160,8 +166,6 @@ async function ubicacion(ctx) {
         ])
     );
 }
-
-const ADMINS = ['D4vRAM369', 'veritasfiliatemporis777'];
 
 async function users(ctx) {
     // Seguridad: Solo los admins definidos pueden usar este comando
@@ -213,11 +217,70 @@ async function admin(ctx) {
             return ctx.reply('⚠️ El administrador no está disponible en este momento.');
         }
 
-        ctx.reply('✅ Tu mensaje ha sido enviado al administrador de forma anónima (solo verá tu nickname).');
+        ctx.reply('✅ Tu mensaje ha sido enviado al administrador.');
 
     } catch (error) {
         console.error('Error enviando mensaje al admin:', error);
         ctx.reply('❌ Hubo un error al enviar el mensaje.');
+    }
+}
+
+async function promo(ctx) {
+    // Seguridad: Solo los admins definidos pueden usar este comando
+    if (!ADMINS.includes(ctx.from.username)) {
+        return; // Ignorar silenciosamente
+    }
+
+    try {
+        const allUsers = await usersDB.getAllUsers();
+        const totalUsers = allUsers.length;
+
+        // Generar link del bot
+        const botUsername = ctx.botInfo.username;
+        const botLink = `https://t.me/${botUsername}`;
+
+        const promoMessage = `
+🌟 *¡Hey!* 🌟
+
+Somos ya *${totalUsers} usuarios* unidos en GranCanMatch_bot 🌴
+
+📢 *Comparte este link* para que este proyecto sea viable:
+${botLink}
+
+Que este proyecto sea posible *depende de ustedes*: yo solo he puesto la infraestructura, los medios y el VPS para que funcione sin interrupciones.
+
+Un abrazo para todos/as, y gracias de antemano 💙
+
+*Fdo: D4vRAM369*
+        `.trim();
+
+        let sentCount = 0;
+        let errorCount = 0;
+
+        // Enviar a todos los usuarios
+        for (const user of allUsers) {
+            try {
+                await ctx.telegram.sendMessage(user.id, promoMessage, { parse_mode: 'Markdown' });
+                sentCount++;
+                // Pequeña pausa para evitar rate limits de Telegram (30 msgs/segundo)
+                await new Promise(resolve => setTimeout(resolve, 35));
+            } catch (e) {
+                errorCount++;
+                console.error(`No se pudo enviar promo a ${user.id}:`, e.message);
+            }
+        }
+
+        ctx.reply(
+            `✅ *Promoción enviada*\n\n` +
+            `📊 Enviados: ${sentCount}\n` +
+            `❌ Errores: ${errorCount}\n` +
+            `👥 Total usuarios: ${totalUsers}`,
+            { parse_mode: 'Markdown' }
+        );
+
+    } catch (error) {
+        console.error('Error en comando /promo:', error);
+        ctx.reply('❌ Error al enviar la promoción.');
     }
 }
 
@@ -232,5 +295,6 @@ module.exports = {
     borrar,
     users,
     admin,
+    promo,
     link: require('./linkFlow').handleLinkCommand
 };
