@@ -245,7 +245,7 @@ async function promo(ctx) {
 Somos ya *${totalUsers} usuarios* unidos en GranCanMatch_bot 🌴
 
 📢 *Comparte este link* para que este proyecto sea viable:
-${botLink}
+t.me/CitasEnLasPalmas_bot
 
 Que este proyecto sea posible *depende de ustedes*: yo solo he puesto la infraestructura, los medios y el VPS para que funcione sin interrupciones.
 
