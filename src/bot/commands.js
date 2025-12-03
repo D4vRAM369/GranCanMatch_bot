@@ -228,7 +228,7 @@ async function admin(ctx) {
 async function promo(ctx) {
     // Seguridad: Solo los admins definidos pueden usar este comando
     if (!ADMINS.includes(ctx.from.username)) {
-        return; // Ignorar silenciosamente
+        return ctx.reply('⚠️ Solo los administradores pueden usar este comando.');
     }
 
     try {
@@ -284,6 +284,62 @@ Un abrazo para todos/as, y gracias de antemano 💙
     }
 }
 
+async function message(ctx) {
+    // Seguridad: Solo los admins definidos pueden usar este comando
+    if (!ADMINS.includes(ctx.from.username)) {
+        return ctx.reply('⚠️ Solo los administradores pueden usar este comando.');
+    }
+
+    // Obtener el mensaje después del comando
+    const customMessage = ctx.message.text.split(' ').slice(1).join(' ');
+
+    if (!customMessage) {
+        return ctx.reply(
+            '📝 *Uso del comando /message*\n\n' +
+            'Escribe: `/message Tu mensaje aquí`\n\n' +
+            'El mensaje se enviará a todos los usuarios registrados.\n\n' +
+            '💡 Puedes usar formato Markdown:\n' +
+            '- `*negrita*` para *negrita*\n' +
+            '- `_cursiva_` para _cursiva_\n' +
+            '- `` `código` `` para `código`',
+            { parse_mode: 'Markdown' }
+        );
+    }
+
+    try {
+        const allUsers = await usersDB.getAllUsers();
+        const totalUsers = allUsers.length;
+
+        let sentCount = 0;
+        let errorCount = 0;
+
+        // Enviar a todos los usuarios
+        for (const user of allUsers) {
+            try {
+                await ctx.telegram.sendMessage(user.id, customMessage, { parse_mode: 'Markdown' });
+                sentCount++;
+                // Pequeña pausa para evitar rate limits de Telegram (30 msgs/segundo)
+                await new Promise(resolve => setTimeout(resolve, 35));
+            } catch (e) {
+                errorCount++;
+                console.error(`No se pudo enviar mensaje a ${user.id}:`, e.message);
+            }
+        }
+
+        ctx.reply(
+            `✅ *Mensaje enviado*\n\n` +
+            `📊 Enviados: ${sentCount}\n` +
+            `❌ Errores: ${errorCount}\n` +
+            `👥 Total usuarios: ${totalUsers}`,
+            { parse_mode: 'Markdown' }
+        );
+
+    } catch (error) {
+        console.error('Error en comando /message:', error);
+        ctx.reply('❌ Error al enviar el mensaje.');
+    }
+}
+
 module.exports = {
     start,
     perfil,
@@ -296,5 +352,6 @@ module.exports = {
     users,
     admin,
     promo,
+    message,
     link: require('./linkFlow').handleLinkCommand
 };

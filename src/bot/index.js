@@ -39,6 +39,7 @@ bot.command('link', commands.link);
 bot.command('users', commands.users);
 bot.command('admin', commands.admin);
 bot.command('promo', commands.promo);
+bot.command('message', commands.message);
 
 // Acciones (Botones)
 bot.action(['gender_male', 'gender_female'], handlers.handleGender);
