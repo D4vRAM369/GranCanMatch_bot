@@ -249,16 +249,17 @@ async function promo(ctx) {
         const promoMessage = `
 🌟 *¡Hey!* 🌟
 
-Somos ya *${totalUsers} usuarios* unidos en GranCanMatch_bot 🌴
+Somos ya *${totalUsers} usuarios* unidos en GranCanMatch\_bot 🌴
 
-📢 *Comparte este link* para que este proyecto sea viable (faltan usuarias):
-t.me/CitasEnLasPalmas_bot
+📢 *Comparte este link* para que este proyecto sea viable:
+t.me/CitasEnLasPalmas\_bot
 
 Que este proyecto sea posible *depende de ustedes*: yo solo he puesto la infraestructura, los medios y el VPS para que funcione sin interrupciones.
 
 Un abrazo para todos/as, y gracias de antemano 💙
 
 *Fdo: D4vRAM369*
+Repositorio del proyecto en Github: https://github.com/D4vRAM369/GranCanMatch\_bot
         `.trim();
 
         let sentCount = 0;
