@@ -18,20 +18,21 @@ jobs:
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          # Navegar al directorio del bot
-          cd /root/GranCanMatch_bot
-
-          # Debug básico
-          echo "🚀 Iniciando despliegue..."
-          echo "Usuario: $(whoami)"
+          # 1. Forzar la carga de NVM y PM2 para el usuario root
+          export NVM_DIR="/root/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
           
-          # Actualizar código
+          # 2. Añadir las rutas de binarios comunes al PATH por si acaso
+          export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/root/.nvm/versions/node/$(ls /root/.nvm/versions/node 2>/dev/null | head -n 1)/bin
+          
+          # 3. Navegar y desplegar
+          cd /root/GranCanMatch_bot
+          echo "🚀 Desplegando en $(pwd) como $(whoami)..."
+          
           git fetch --all
           git reset --hard origin/main
           
-          # Instalar dependencias
           npm install --production
           
-          # Reiniciar el proceso
           pm2 restart grancanmatch-bot || pm2 start src/server.js --name grancanmatch-bot
           pm2 save
