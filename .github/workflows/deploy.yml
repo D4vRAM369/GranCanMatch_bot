@@ -16,23 +16,19 @@ jobs:
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
         script: |
-          # 1. Forzar la carga de NVM y PM2 para el usuario root
-          export NVM_DIR="/root/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+          # 1. Definir rutas exactas donde están npm y pm2 en este VPS
+          export PATH=$PATH:/usr/bin:/usr/lib/node_modules/npm/bin:/usr/lib/node_modules/pm2/bin
           
-          # 2. Añadir las rutas de binarios comunes al PATH por si acaso
-          export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/root/.nvm/versions/node/$(ls /root/.nvm/versions/node 2>/dev/null | head -n 1)/bin
-          
-          # 3. Navegar y desplegar
+          # 2. Navegar al directorio del bot
           cd /root/GranCanMatch_bot
-          echo "🚀 Desplegando en $(pwd) como $(whoami)..."
+          echo "🚀 Desplegando como $(whoami) con rutas absolutas..."
           
+          # 3. Actualizar código
           git fetch --all
           git reset --hard origin/main
           
+          # 4. Instalar dependencias y reiniciar
           npm install --production
-          
           pm2 restart grancanmatch-bot || pm2 start src/server.js --name grancanmatch-bot
           pm2 save
