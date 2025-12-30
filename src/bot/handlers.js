@@ -321,7 +321,66 @@ module.exports = {
     handleText,
     handleLocation,
     handleRadius,
-    handleLocationActions,
-    handleDeleteActions,
-    handleAdmin
+    handleAdmin,
+    handleDonation,
+    handlePreCheckout,
+    handleSuccessfulPayment
 };
+
+const config = require('../config');
+
+async function handleDonation(ctx) {
+    const amountStr = ctx.match[1]; // '100', '300', etc.
+    const amount = parseInt(amountStr, 10);
+
+    const prices = [
+        { label: 'Donación al desarrollador', amount: amount } // amount in cents
+    ];
+
+    const payload = `donation_${ctx.from.id}_${Date.now()}`;
+
+    await ctx.answerCbQuery();
+    await ctx.replyWithInvoice({
+        title: 'Donación GranCanMatch',
+        description: 'Ayuda a mantener el servidor activo 💙',
+        payload: payload,
+        provider_token: config.paymentProviderToken,
+        currency: 'EUR',
+        prices: prices,
+        start_parameter: 'donation',
+        need_name: true // Optional, pide nombre para la factura en Telegram
+    });
+}
+
+async function handlePreCheckout(ctx) {
+    // Aprobamos cualquier pre-checkout (es una donación)
+    await ctx.answerPreCheckoutQuery(true);
+}
+
+async function handleSuccessfulPayment(ctx) {
+    const amount = ctx.message.successful_payment.total_amount / 100;
+    const currency = ctx.message.successful_payment.currency;
+
+    await ctx.reply(`🎉 ¡Muchísimas gracias por tu donación de ${amount} ${currency}! 💖\n\nGracias a ti, este bot seguirá funcionando.`);
+
+    // Notificar al admin
+    const { admins: ADMINS } = require('../config');
+    const usersDB = require('../firebase/users');
+
+    const senderName = ctx.from.username ? `@${ctx.from.username}` : ctx.from.first_name;
+
+    for (const adminName of ADMINS) {
+        const adminUser = await usersDB.getUserByUsername(adminName);
+        if (adminUser) {
+            try {
+                await ctx.telegram.sendMessage(
+                    adminUser.id,
+                    `💰 **Nueva Donación Recibida**\n\nDe: ${senderName}\nCantidad: ${amount} ${currency}\nPayload: ${ctx.message.successful_payment.invoice_payload}`,
+                    { parse_mode: 'Markdown' }
+                );
+            } catch (e) {
+                console.error('Error notificando donación al admin:', e);
+            }
+        }
+    }
+}

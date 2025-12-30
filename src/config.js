@@ -9,5 +9,6 @@ module.exports = {
         seen: 'seen',
         matches: 'matches'
     },
-    admins: ['D4VRAM369', 'veritasfiliatemporis777']
+    admins: ['D4VRAM369', 'veritasfiliatemporis777'],
+    paymentProviderToken: process.env.PAYMENT_PROVIDER_TOKEN || '2051251535:TEST:OTk5MDA4ODgxLTAwNQ'
 };

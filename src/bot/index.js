@@ -40,6 +40,7 @@ bot.command('users', commands.users);
 bot.command('admin', commands.admin);
 bot.command('promo', commands.promo);
 bot.command('message', commands.message);
+bot.command('donar', commands.donar);
 
 // Acciones (Botones)
 bot.action(['gender_male', 'gender_female'], handlers.handleGender);
@@ -50,11 +51,14 @@ bot.action(['loc_precise', 'loc_city', 'loc_off', 'loc_count'], handlers.handleL
 bot.action(['delete_yes', 'delete_no'], handlers.handleDeleteActions);
 bot.action(/radius_(\d+)/, handlers.handleRadius);
 bot.action('admin_contact', handlers.handleAdmin);
+bot.action(/donate_(\d+)/, handlers.handleDonation);
 
 // Eventos
 bot.on('photo', handlers.handlePhoto);
 bot.on('location', handlers.handleLocation);
 bot.on('text', handlers.handleText);
+bot.on('pre_checkout_query', handlers.handlePreCheckout);
+bot.on('successful_payment', handlers.handleSuccessfulPayment);
 
 // Manejo de errores
 bot.catch((err, ctx) => {

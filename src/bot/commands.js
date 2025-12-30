@@ -374,5 +374,21 @@ module.exports = {
     admin,
     promo,
     message,
-    link: require('./linkFlow').handleLinkCommand
+    link: require('./linkFlow').handleLinkCommand,
+    donar
 };
+
+async function donar(ctx) {
+    ctx.reply(
+        '☕ *Invítame a un café*\n\n' +
+        'Este bot es gratuito, pero mantener el servidor cuesta dinero y tiempo.\n' +
+        'Si te gusta y encuentras pareja (o al menos te ríes un rato), puedes colaborar:\n\n' +
+        'Selecciona una cantidad:',
+        Markup.inlineKeyboard([
+            [Markup.button.callback('1,00 €', 'donate_100')],
+            [Markup.button.callback('3,00 €', 'donate_300')],
+            [Markup.button.callback('5,00 € (Copa)', 'donate_500')],
+            [Markup.button.callback('10,00 € (Almuerzo)', 'donate_1000')]
+        ])
+    );
+}
