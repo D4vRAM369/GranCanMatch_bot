@@ -247,19 +247,19 @@ async function promo(ctx) {
         const botLink = `https://t.me/${botUsername}`;
 
         const promoMessage = `
-🌟 *¡Hey!* 🌟
+🌟 <b>¡Hey!</b> 🌟
 
-Somos ya *${totalUsers} usuarios* unidos en GranCanMatch\_bot 🌴
+Somos ya <b>${totalUsers} usuarios</b> unidos en GranCanMatch_bot 🌴
 
-📢 *Comparte este link* para que este proyecto sea viable:
-t.me/CitasEnLasPalmas\_bot
+📢 <b>Comparte este link</b> para que este proyecto sea viable:
+t.me/CitasEnLasPalmas_bot
 
-Que este proyecto sea posible *depende de ustedes*: yo solo he puesto la infraestructura, los medios y el VPS para que funcione sin interrupciones.
+Que este proyecto sea posible <b>depende de ustedes</b>: yo solo he puesto la infraestructura, los medios y el VPS para que funcione sin interrupciones.
 
 Un abrazo para todos/as, y gracias de antemano 💙
 
-*Fdo: D4vRAM369*
-Repositorio del proyecto en Github: https://github.com/D4vRAM369/GranCanMatch\_bot
+<b>Fdo: D4vRAM369</b>
+Repositorio del proyecto en Github: https://github.com/D4vRAM369/GranCanMatch_bot
         `.trim();
 
         let sentCount = 0;
@@ -268,7 +268,7 @@ Repositorio del proyecto en Github: https://github.com/D4vRAM369/GranCanMatch\_b
         // Enviar a todos los usuarios
         for (const user of allUsers) {
             try {
-                await ctx.telegram.sendMessage(user.id, promoMessage, { parse_mode: 'Markdown' });
+                await ctx.telegram.sendMessage(user.id, promoMessage, { parse_mode: 'HTML' });
                 sentCount++;
                 // Pequeña pausa para evitar rate limits de Telegram (30 msgs/segundo)
                 await new Promise(resolve => setTimeout(resolve, 35));
@@ -279,11 +279,11 @@ Repositorio del proyecto en Github: https://github.com/D4vRAM369/GranCanMatch\_b
         }
 
         ctx.reply(
-            `✅ *Promoción enviada*\n\n` +
+            `✅ <b>Promoción enviada</b>\n\n` +
             `📊 Enviados: ${sentCount}\n` +
             `❌ Errores: ${errorCount}\n` +
             `👥 Total usuarios: ${totalUsers}`,
-            { parse_mode: 'Markdown' }
+            { parse_mode: 'HTML' }
         );
 
     } catch (error) {
@@ -305,16 +305,14 @@ async function message(ctx) {
     const customMessage = ctx.message.text.split(' ').slice(1).join(' ');
 
     if (!customMessage) {
-        return ctx.reply(
-            '📝 *Uso del comando /message*\n\n' +
-            'Escribe: `/message Tu mensaje aquí`\n\n' +
+        await ctx.reply(
+            '📝 <b>Uso del comando /message</b>\n\n' +
+            'Escribe: <code>/message Tu mensaje aquí</code>\n\n' +
             'El mensaje se enviará a todos los usuarios registrados.\n\n' +
-            '💡 Puedes usar formato Markdown:\n' +
-            '- `*negrita*` para *negrita*\n' +
-            '- `_cursiva_` para _cursiva_\n' +
-            '- `` `código` `` para `código`',
-            { parse_mode: 'Markdown' }
+            '💡 <b>Formato:</b> Pues usar Markdown (*negrita*, _cursiva_). Si el formato falla, se enviará como texto plano automáticamente.',
+            { parse_mode: 'HTML' }
         );
+        return;
     }
 
     try {
@@ -329,9 +327,15 @@ async function message(ctx) {
         // Enviar a todos los usuarios
         for (const user of allUsers) {
             try {
-                await ctx.telegram.sendMessage(user.id, customMessage, { parse_mode: 'Markdown' });
+                try {
+                    // Intento 1: Con Markdown
+                    await ctx.telegram.sendMessage(user.id, customMessage, { parse_mode: 'Markdown' });
+                } catch (markdownError) {
+                    // Intento 2: Sin formato (por si el admin puso algo mal)
+                    await ctx.telegram.sendMessage(user.id, customMessage);
+                }
                 sentCount++;
-                // Pequeña pausa para evitar rate limits de Telegram (30 msgs/segundo)
+                // Pequeña pausa para evitar rate limits
                 await new Promise(resolve => setTimeout(resolve, 35));
             } catch (e) {
                 const msg = e.message || '';
@@ -341,19 +345,19 @@ async function message(ctx) {
                     deactivatedCount++;
                 } else {
                     otherErrorCount++;
-                    console.error(`Error desconocido enviando a ${user.id}:`, msg);
+                    console.error(`Error broadcast a ${user.id}:`, msg);
                 }
             }
         }
 
         ctx.reply(
-            `✅ *Mensaje enviado*\n\n` +
+            `✅ <b>Mensaje enviado</b>\n\n` +
             `📊 Enviados: ${sentCount}\n` +
             `🚫 Bloqueados: ${blockedCount}\n` +
             `👻 Desactivados: ${deactivatedCount}\n` +
             `❌ Otros errores: ${otherErrorCount}\n` +
             `👥 Total usuarios: ${totalUsers}`,
-            { parse_mode: 'Markdown' }
+            { parse_mode: 'HTML' }
         );
 
     } catch (error) {
