@@ -19,34 +19,16 @@ jobs:
         key: ${{ secrets.VPS_PASSWORD }}
         # Si usas contraseña en lugar de clave SSH, usa: password: ${{ secrets.VPS_PASSWORD }}
         script: |
-          # Directorio de despliegue
-          DEPLOY_DIR="/root/GranCanMatch_bot"
-          REPO_URL="https://github.com/D4vRAM369/GranCanMatch_bot.git"
-          
-          # Si el directorio no existe, clonamos
-          if [ ! -d "$DEPLOY_DIR" ]; then
-            echo "📂 Directorio no encontrado. Clonando repositorio..."
-            git clone "$REPO_URL" "$DEPLOY_DIR"
-          fi
-          
-          # Entramos al directorio
-          cd "$DEPLOY_DIR" || exit 1
-          
-          # Aseguramos que es un repo seguro (evita errores de propiedad si cambiamos de usuario)
-          git config --global --add safe.directory "$DEPLOY_DIR"
-          
-          # Actualizamos código
-          echo "⬇️ Actualizando código..."
+          # Navegar al directorio del bot
+          cd /root/GranCanMatch_bot
+
+          # Obtener los últimos cambios (Forzando la actualización para evitar conflictos)
           git fetch --all
           git reset --hard origin/main
           
-          # Actualizamos dependencias
-          echo "📦 Instalando dependencias..."
+          # Instalar dependencias por si acaso
           npm install --production
           
-          # Reiniciamos proceso
-          echo "🚀 Reiniciando bot..."
+          # Reiniciar el proceso
           pm2 restart grancanmatch-bot || pm2 start src/server.js --name grancanmatch-bot
           pm2 save
-          
-          echo "✅ Despliegue completado."
