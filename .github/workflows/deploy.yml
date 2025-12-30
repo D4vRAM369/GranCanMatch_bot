@@ -17,8 +17,18 @@ jobs:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.VPS_PASSWORD }}
-        # Si usas contraseña en lugar de clave SSH, usa: password: ${{ secrets.VPS_PASSWORD }}
         script: |
+          # Cargar variables de entorno (NVM, PM2, etc.)
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          [ -s "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+          
+          # Debug: Ver quién soy y qué herramientas tengo
+          echo "👤 Usuario: $(whoami)"
+          echo "📁 Ruta actual: $(pwd)"
+          echo "🔧 Node versión: $(node -v)"
+          echo "🔧 PM2 versión: $(pm2 -v)"
+
           # Navegar al directorio del bot
           cd /root/GranCanMatch_bot
 
@@ -26,7 +36,7 @@ jobs:
           git fetch --all
           git reset --hard origin/main
           
-          # Instalar dependencias por si acaso
+          # Instalar dependencias
           npm install --production
           
           # Reiniciar el proceso
