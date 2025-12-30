@@ -16,23 +16,15 @@ jobs:
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.VPS_PASSWORD }}
         script: |
-          # Cargar variables de entorno (NVM, PM2, etc.)
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-          [ -s "$HOME/.bashrc" ] && source "$HOME/.bashrc"
-          
-          # Debug: Ver quién soy y qué herramientas tengo
-          echo "👤 Usuario: $(whoami)"
-          echo "📁 Ruta actual: $(pwd)"
-          echo "🔧 Node versión: $(node -v)"
-          echo "🔧 PM2 versión: $(pm2 -v)"
-
           # Navegar al directorio del bot
           cd /root/GranCanMatch_bot
 
-          # Obtener los últimos cambios (Forzando la actualización para evitar conflictos)
+          # Debug básico
+          echo "🚀 Iniciando despliegue..."
+          echo "Usuario: $(whoami)"
+          
+          # Actualizar código
           git fetch --all
           git reset --hard origin/main
           
