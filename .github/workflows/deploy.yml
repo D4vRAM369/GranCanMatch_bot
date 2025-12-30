@@ -1,44 +1,36 @@
-name: Auto-Deploy to VPS
+name: Deploy to VPS
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main, master ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v0.1.10
-        env:
-          FIREBASE_SPOTS_KEY: ${{ secrets.FIREBASE_SPOTS_KEY }}
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: root
-          key: ${{ secrets.SSH_KEY }}
-          envs: FIREBASE_SPOTS_KEY
-          script: |
-            echo "➡️ Conectado al VPS"
-
-            # Ruta real en EL VPS
-            cd /var/www/GranCanMatch_bot
-
-            echo "➡️ Actualizando código"
-            git fetch --all
-            git reset --hard origin/main
-
-            echo "➡️ Restaurando secretos"
-            echo "$FIREBASE_SPOTS_KEY" > src/firebase/serviceAccountKey-spots.json
-
-            echo "➡️ Instalando dependencias"
-            npm install --production --no-optional
-
-            echo "➡️ Reiniciando PM2"
-            pm2 restart grancanmatch || pm2 start src/server.js --name grancanmatch
-            pm2 save
-
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_PASSWORD }}
+        # Si usas contraseña en lugar de clave SSH, usa: password: ${{ secrets.VPS_PASSWORD }}
+        script: |
+          # Navegar al directorio del bot
+          cd /root/GranCanMatch_bot || cd /home/admin/GranCanMatch_bot
+          
+          # Obtener los últimos cambios
+          git pull origin main
+          
+          # Instalar dependencias por si acaso
+          npm install --production
+          
+          # Reiniciar el proceso (asumiendo que usas PM2)
+          # Si el proceso se llama 'grancanmatch-bot'
+          pm2 restart grancanmatch-bot || pm2 start src/server.js --name grancanmatch-bot
+          
+          # Guardar la lista de procesos para que arranque al inicio
+          pm2 save

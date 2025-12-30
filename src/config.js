@@ -9,5 +9,5 @@ module.exports = {
         seen: 'seen',
         matches: 'matches'
     },
-    admins: ['D4vRAM369', 'veritasfiliatemporis777']
+    admins: ['D4VRAM369', 'veritasfiliatemporis777']
 };

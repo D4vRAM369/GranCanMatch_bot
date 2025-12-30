@@ -169,7 +169,11 @@ async function ubicacion(ctx) {
 
 async function users(ctx) {
     // Seguridad: Solo los admins definidos pueden usar este comando
-    if (!ADMINS.includes(ctx.from.username)) {
+    // Seguridad: Solo los admins definidos pueden usar este comando
+    const username = ctx.from.username || '';
+    const isAdmin = ADMINS.some(admin => admin.toLowerCase() === username.toLowerCase());
+
+    if (!isAdmin) {
         return; // Ignorar silenciosamente
     }
 
@@ -227,7 +231,10 @@ async function admin(ctx) {
 
 async function promo(ctx) {
     // Seguridad: Solo los admins definidos pueden usar este comando
-    if (!ADMINS.includes(ctx.from.username)) {
+    const username = ctx.from.username || '';
+    const isAdmin = ADMINS.some(admin => admin.toLowerCase() === username.toLowerCase());
+
+    if (!isAdmin) {
         return ctx.reply('⚠️ Solo los administradores pueden usar este comando.');
     }
 
@@ -286,7 +293,10 @@ Un abrazo para todos/as, y gracias de antemano 💙
 
 async function message(ctx) {
     // Seguridad: Solo los admins definidos pueden usar este comando
-    if (!ADMINS.includes(ctx.from.username)) {
+    const username = ctx.from.username || '';
+    const isAdmin = ADMINS.some(admin => admin.toLowerCase() === username.toLowerCase());
+
+    if (!isAdmin) {
         return ctx.reply('⚠️ Solo los administradores pueden usar este comando.');
     }
 
@@ -311,7 +321,9 @@ async function message(ctx) {
         const totalUsers = allUsers.length;
 
         let sentCount = 0;
-        let errorCount = 0;
+        let blockedCount = 0;
+        let deactivatedCount = 0;
+        let otherErrorCount = 0;
 
         // Enviar a todos los usuarios
         for (const user of allUsers) {
@@ -321,15 +333,24 @@ async function message(ctx) {
                 // Pequeña pausa para evitar rate limits de Telegram (30 msgs/segundo)
                 await new Promise(resolve => setTimeout(resolve, 35));
             } catch (e) {
-                errorCount++;
-                console.error(`No se pudo enviar mensaje a ${user.id}:`, e.message);
+                const msg = e.message || '';
+                if (msg.includes('blocked') || msg.includes('Forbidden')) {
+                    blockedCount++;
+                } else if (msg.includes('deactivated')) {
+                    deactivatedCount++;
+                } else {
+                    otherErrorCount++;
+                    console.error(`Error desconocido enviando a ${user.id}:`, msg);
+                }
             }
         }
 
         ctx.reply(
             `✅ *Mensaje enviado*\n\n` +
             `📊 Enviados: ${sentCount}\n` +
-            `❌ Errores: ${errorCount}\n` +
+            `🚫 Bloqueados: ${blockedCount}\n` +
+            `👻 Desactivados: ${deactivatedCount}\n` +
+            `❌ Otros errores: ${otherErrorCount}\n` +
             `👥 Total usuarios: ${totalUsers}`,
             { parse_mode: 'Markdown' }
         );
