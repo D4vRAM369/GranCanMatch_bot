@@ -22,8 +22,9 @@ jobs:
           # Navegar al directorio del bot
           cd /root/GranCanMatch_bot || cd /home/admin/GranCanMatch_bot
           
-          # Obtener los últimos cambios
-          git pull origin main
+          # Obtener los últimos cambios (Forzando la actualización para evitar conflictos)
+          git fetch --all
+          git reset --hard origin/main
           
           # Instalar dependencias por si acaso
           npm install --production
