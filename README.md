@@ -37,7 +37,7 @@
 
 📊 **El potencial solo puede ser reflejado en el grupo de Telegram:** [t.me/GranCanMatch](https://t.me/GranCanMatch)
 
-💬 **¿Preguntas, ganas de contribuir o lo que sea?** Contáctame a través de Telegram.
+💬 **¿Preguntas, ganas de contribuir o lo que sea?** Contáctame a través de [Telegram](https://t.me/D4VRAM369).
 
 ---
 
