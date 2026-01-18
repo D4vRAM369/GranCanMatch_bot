@@ -18,13 +18,35 @@
 ![Love & Coffee](https://img.shields.io/badge/Made_with-Love_&_Coffee-ff69b4)
 [![Buy me a coffee](https://img.shields.io/badge/Buy_me_a_coffee-☕-5F7FFF)](https://www.buymeacoffee.com/D4vRAM369)
 
+---
+
+## 🚨⚠️ DISCLAIMER: BOT FUERA DE SERVICIO ⚠️🚨
+
+**Este bot ya NO está en funcionamiento desde el 13 de enero de 2026.**
+
+📅 Estuvo desplegado desde el **29 de noviembre de 2025** en un VPS de DigitalOcean que costaba **4$/mes**.
+
+❌ **Razones del cierre:**
+- 👫 Base de datos desequilibrada en cuanto a ambos géneros
+- 📢 Poca promoción
+- 💸 Falta de micropagos para mantenerla funcionando
+
+🗑️ El droplet donde estaba alojado ha sido eliminado.
+
+🔄 **¿Posible regreso?** Si veo que en el grupo de Telegram se va uniendo mucha gente y/o veo potencial por alguna forma de promoción, retomaré el proyecto. La migración sería hacia **Oracle VM Always Free Tier**, aunque el proceso de registro es bastante complejo y pesado. Mi motivación para el proyecto dependerá de su posible potencial.
+
+📊 **El potencial solo puede ser reflejado en el grupo de Telegram:** [t.me/GranCanMatch](https://t.me/GranCanMatch)
+
+💬 **¿Preguntas, ganas de contribuir o lo que sea?** Contáctame a través de Telegram.
+
+---
 
 > **"Conexiones reales, sin algoritmos depredadores."**
 
 Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot)
 
-**Este bot está funcionando 24/7 en un VPS.
-Su continuidad depende del uso y apoyo de la comunidad.**
+~~**Este bot estaba funcionando 24/7 en un VPS.**~~
+~~**Su continuidad dependía del uso y apoyo de la comunidad.**~~
 
 Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantilizan las relaciones humanas, de una forma que no debería ser aceptada como normopatía, únicamente por un _"es lo que hay"_ y porqué es lo que impera a día de hoy.
 
