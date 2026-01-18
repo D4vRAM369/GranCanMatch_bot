@@ -43,10 +43,24 @@
 
 > **"Conexiones reales, sin algoritmos depredadores."**
 
-Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot)
+Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del ~~bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot)~~ grupo donde continua el concepto del bot, y desde cual se retomaría el proyecto de forma condicional en el futuro, si se unen suficientes usuarios y usuarias por igual, y tengo tiempo y motivación, es [t.me/GranCanMatch](url).
+
+A mayor equilibrio en el grupo de ambos génercos, mayor potencial la idea de volver a ponerme con el proyecto, así que les invito a unirse.
+Pero por favor, quería recordarles amablemente, que **éste bot solo tiene como propósito unir a personas de Gran Canaria o que vivan actualmente en Gran Canaria**.
+
+Quizás en el futuro sea extendido para permitir el ingreso de usuarios de otros lugares, pero **la idea original es ser solo personas de la isla**, debido a que si ya es difícil establecer vínculos y conexiones sanas físicamente hoy en día, más aún en una isla de 1M de personas aproximadamente.
+**Como mucho personas del Archipiélago de las Islas Canarias, pero si no son de aquí, les solicito que no entren para constuir una base de datos sólida y útil.**
+
+Dicho esto, **si entran personas que no son de la isla o no tienen pensado estar pronto en ella**, se les notificará acerca de ésto y se les reenviará el link del proyecto con éste mensaje, y su enfoque y descripción.
+
+**Si a pesar de ésto siguen sin abandonar el grupo, serán eliminados.**
+
+Gracias por su comprensión
 
 ~~**Este bot estaba funcionando 24/7 en un VPS.**~~
 ~~**Su continuidad dependía del uso y apoyo de la comunidad.**~~
+
+_ _ _
 
 Vivimos en una era donde las apps de citas monetizan nuestra soledad y mercantilizan las relaciones humanas, de una forma que no debería ser aceptada como normopatía, únicamente por un _"es lo que hay"_ y porqué es lo que impera a día de hoy.
 
