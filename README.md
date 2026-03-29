@@ -31,7 +31,7 @@ _~~🚨DISCLAIMER: BOT FUERA DE SERVICIO🚨~~_
 
 **Éste bot vuelve a estar desplegado y en funcionamiento desde el 23/03/2026 aprovechando otro VPS activo en cual está alojado de forma secundaria, sin dar ningún tipo de garantías de cuánto durará activo.**
 
-**Para aportar económicamente para el proyecto _(solamente 4$ al mes)_, dona mediante BuyMeACoffee y ponlo en concepto junto al importe.**
+**Para aportar económicamente para el proyecto _(solamente 4$ al mes)_, dona mediante [BuyMeACoffee](https://buymeacoffee.com/d4vram369) y ponlo en concepto junto al importe.**
 
 ❌ **Razones del cierre en su momento:**
 - 👫 Base de datos desequilibrada en cuanto a ambos géneros
