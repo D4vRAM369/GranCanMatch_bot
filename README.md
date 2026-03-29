@@ -20,22 +20,29 @@
 
 ---
 
-## 🚨⚠️ DISCLAIMER: BOT FUERA DE SERVICIO ⚠️🚨
+_~~🚨DISCLAIMER: BOT FUERA DE SERVICIO🚨~~_
 
-**Este bot ya NO está en funcionamiento desde el 13 de enero de 2026.**
+#### ÉSTE BOT VUELVE A ESTAR EN FUNCIONAMIENTO ✅ _(solo que no sé hasta cuándo)_
 
-📅 Estuvo desplegado desde el **29 de noviembre de 2025** en un VPS de DigitalOcean que costaba **4$/mes**.
 
-❌ **Razones del cierre:**
+~~**Este bot ya NO está en funcionamiento desde el 13 de enero de 2026.**~~
+
+~~📅 Estuvo desplegado desde el **29 de noviembre de 2025** en un VPS de DigitalOcean que costaba **4$/mes**.~~
+
+**Éste bot vuelve a estar desplegado y en funcionamiento desde el 23/03/2026 aprovechando otro VPS activo en cual está alojado de forma secundaria, sin dar ningún tipo de garantías de cuánto durará activo.**
+
+**Para aportar económicamente para el proyecto _(solamente 4$ al mes)_, dona mediante BuyMeACoffee y ponlo en concepto junto al importe.**
+
+❌ **Razones del cierre en su momento:**
 - 👫 Base de datos desequilibrada en cuanto a ambos géneros
 - 📢 Poca promoción
-- 💸 Falta de micropagos para mantenerla funcionando
+- 💸 Falta de micropagos para mantenerla funcionando y/o de éxito para migrarlo de forma gratuita a Oracle VM Always Free Tier _(registro costoso e inestable)_. Si tienes cualquier otra sugerencia para mantenerlo vivo en un VPS gratuito sin depender de hardware, envíame tus sugerencias mediante Telegram.
 
-🗑️ El droplet donde estaba alojado ha sido eliminado.
+🗑️ El droplet donde estaba alojado ha sido eliminado. Ahorra corre en uno paralelo con otra finalidad, la puesta en marcha del bot de nuevo ha sido un extra imprevisto.
 
-🔄 **¿Posible regreso?** Si veo que en el grupo de Telegram se va uniendo mucha gente y/o veo potencial por alguna forma de promoción, retomaré el proyecto. La migración sería hacia **Oracle VM Always Free Tier**, aunque el proceso de registro es bastante complejo y pesado. Mi motivación para el proyecto dependerá de su posible potencial.
+~~🔄 **¿Posible regreso estable y no puntual?** Si veo que en el grupo de Telegram se va uniendo mucha gente y/o veo potencial por alguna forma de promoción, retomaré el proyecto. La migración sería hacia **Oracle VM Always Free Tier**, aunque el proceso de registro es bastante complejo y pesado. Mi motivación para el proyecto dependerá de su posible potencial.~~
 
-📊 **El potencial solo puede ser reflejado en el grupo de Telegram:** [t.me/GranCanMatch](https://t.me/GranCanMatch)
+🗣 **Grupo de Telegram:** [t.me/GranCanMatch](https://t.me/GranCanMatch)
 
 💬 **¿Preguntas, ganas de contribuir o lo que sea?** Contáctame a través de [Telegram](https://t.me/D4VRAM369).
 
@@ -43,10 +50,11 @@
 
 > **"Conexiones reales, sin algoritmos depredadores."**
 
-Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del ~~bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot)~~ grupo donde continua el concepto del bot, y desde cual se retomaría el proyecto de forma condicional en el futuro, si se unen suficientes usuarios y usuarias por igual, y tengo tiempo y motivación, es [t.me/GranCanMatch](url).
+Un bot de Telegram para conocer gente en **Gran Canaria** de forma sencilla, directa y honesta. La dirección del bot es: [https://t.me/@CitasEnLasPalmas_bot](https://t.me/CitasEnLasPalmas_bot).
 
-A mayor equilibrio en el grupo de ambos génercos, mayor potencial la idea de volver a ponerme con el proyecto, así que les invito a unirse.
-Pero por favor, quería recordarles amablemente, que **éste bot solo tiene como propósito unir a personas de Gran Canaria o que vivan actualmente en Gran Canaria**.
+A mayor equilibrio en el grupo de ambos génercos, mayor potencial la idea de volver a ponerme con el proyecto de forma activa y no de forma puntual como ha sido su reapertura (que ha sido hace un par de días, siendo esto escrito a 29/03/2026), así que les invito a unirse.
+
+Pero por favor, quería recordarles amablemente, que **éste bot solo tiene como propósito unir a personas de Gran Canaria o que vivan actualmente en Gran Canaria**, o que estén por llegar a la isla, o **mínimo** que sean de una isla vecina y frecuenten la isla por algún motivo.
 
 Quizás en el futuro sea extendido para permitir el ingreso de usuarios de otros lugares, pero **la idea original es ser solo personas de la isla**, debido a que si ya es difícil establecer vínculos y conexiones sanas físicamente hoy en día, más aún en una isla de 1M de personas aproximadamente.
 **Como mucho personas del Archipiélago de las Islas Canarias, pero si no son de aquí, les solicito que no entren para constuir una base de datos sólida y útil.**
